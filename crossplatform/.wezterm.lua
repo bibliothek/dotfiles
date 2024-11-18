@@ -1,4 +1,3 @@
--- Pull in the wezterm API
 local wezterm = require("wezterm")
 local mux = wezterm.mux
 
