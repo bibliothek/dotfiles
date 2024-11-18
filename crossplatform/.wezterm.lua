@@ -42,10 +42,9 @@ config.keys = {
 	},
 }
 
-wezterm.on("gui-startup", function(cmd)
+wezterm.on("gui-startup", function(_)
 	local shell_tab, _, window = mux.spawn_window({
 		workspace = "main",
-		args = cmd,
 	})
 	shell_tab:set_title("1st")
 
