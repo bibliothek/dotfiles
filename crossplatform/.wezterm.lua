@@ -13,11 +13,12 @@ end
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = "catppuccin-macchiato"
-config.font_size = 11.0
+config.color_scheme = "catppuccin-mocha"
+config.font_size = 10.0
 -- config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.window_decorations = 'RESIZE'
+config.default_cursor_style = 'SteadyBar'
 
 config.keys = {
 	{
