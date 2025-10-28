@@ -19,6 +19,7 @@ config.font_size = 10.0
 config.tab_bar_at_bottom = true
 config.window_decorations = 'RESIZE'
 config.default_cursor_style = 'SteadyBar'
+config.front_end = "WebGpu"
 
 config.keys = {
 	{
