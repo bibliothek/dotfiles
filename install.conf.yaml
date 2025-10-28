@@ -1,8 +1,10 @@
 - defaults:
     link:
       relink: true
+      force: true
 
 - link:
     ~/.ideavimrc: crossplatform/.ideavimrc
     ~/.wezterm.lua: crossplatform/.wezterm.lua
+    ~/.config/atuin/config.toml: crossplatform/atuin
 
