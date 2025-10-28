@@ -6,5 +6,9 @@
 - link:
     ~/.ideavimrc: crossplatform/.ideavimrc
     ~/.wezterm.lua: crossplatform/.wezterm.lua
-    ~/.config/atuin/config.toml: crossplatform/atuin
-
+    ~/martin-paradox.omp.json: crossplatform/martin-paradox.omp.json
+    ~/.config/atuin/config.toml: 
+      path: crossplatform/atuin
+    ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
+      path: crossplatform/profile.ps1
+      if: ver
