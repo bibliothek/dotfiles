@@ -1,0 +1,8 @@
+- defaults:
+    link:
+      relink: true
+
+- link:
+    ~/.ideavimrc: crossplatform/.ideavimrc
+    ~/.wezterm.lua: crossplatform/.wezterm.lua
+
