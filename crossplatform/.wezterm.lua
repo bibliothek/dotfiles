@@ -4,17 +4,19 @@ local mux = wezterm.mux
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 local line_ending = "\n"
+local font_size = 12.0
 
 if os.getenv("OS") == "Windows_NT" then
 	config.default_prog = { "pwsh.exe" }
 	line_ending = "\r\n"
+    font_size = 10.0
 end
 
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
 config.color_scheme = "catppuccin-mocha"
-config.font_size = 12.0
+config.font_size = font_size
 -- config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.window_decorations = 'RESIZE'
