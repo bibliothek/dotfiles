@@ -1,0 +1,32 @@
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+export PATH="$PATH:$HOME/source/repos/win11-setup/scripts:/home/martin/.dotnet/tools"
+
+ZSH_THEME="agnoster"
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+	git
+	z
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+[ -f $HOME/.env ] && set -a && source $HOME/.env && set +a
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+prompt_context(){}
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
