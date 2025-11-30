@@ -29,4 +29,4 @@ prompt_context(){}
 
 eval "$(atuin init zsh)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
