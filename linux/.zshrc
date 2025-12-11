@@ -14,6 +14,7 @@ plugins=(
 	git
 	z
 )
+ZSHZ_CASE=smart
 
 source $ZSH/oh-my-zsh.sh
 
