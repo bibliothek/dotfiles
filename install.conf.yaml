@@ -4,6 +4,7 @@
       force: true
 
 - link:
+    ~/.tmux.conf: crossplatform/.tmux.conf
     ~/.ideavimrc: crossplatform/.ideavimrc
     ~/.wezterm.lua: crossplatform/.wezterm.lua
     ~/martin-paradox.omp.json: crossplatform/martin-paradox.omp.json
