@@ -16,6 +16,7 @@ end
 
 -- For example, changing the color scheme:
 config.color_scheme = "catppuccin-mocha"
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Regular" })
 config.font_size = font_size
 -- config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
