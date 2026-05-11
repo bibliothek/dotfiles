@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-export PATH="$PATH:$HOME/source/repos/win11-setup/scripts:/home/martin/.dotnet/tools"
+export PATH="$PATH:$HOME/source/repos/helper-scripts:/home/martin/.dotnet/tools"
 
 ZSH_THEME="agnoster"
 
