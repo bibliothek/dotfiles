@@ -48,10 +48,13 @@ config.keys = {
 }
 
 wezterm.on("gui-startup", function(_)
-	local shell_tab, _, window = mux.spawn_window({
+	local spawn_args = {
 		workspace = "main",
-	})
-	shell_tab:set_title("1st")
+	}
+	if os.getenv("OS") == "Windows_NT" then
+		spawn_args.args = { "ubuntu.exe" }
+	end
+	local shell_tab, _, window = mux.spawn_window(spawn_args)
 
 	-- local editor_tab, _, _ = window:spawn_tab({})
 	-- editor_tab:set_title("Editor")
