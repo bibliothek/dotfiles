@@ -51,20 +51,17 @@ wezterm.on("gui-startup", function(_)
 	local spawn_args = {
 		workspace = "main",
 	}
+    local first_title = "1st"
 	if os.getenv("OS") == "Windows_NT" then
 		spawn_args.args = { "ubuntu.exe" }
+        first_title = "ubuntu"
 	end
 	local shell_tab, _, window = mux.spawn_window(spawn_args)
+    shell_tab:set_title(first_title)
 
-	-- local editor_tab, _, _ = window:spawn_tab({})
-	-- editor_tab:set_title("Editor")
-	--
-	-- local second_brain_tab, second_brain_pane, _ = window:spawn_tab({
-	-- 	cwd = wezterm.home_dir .. "/OneDrive - UiPath/Documents/SecondWorkBrain/",
-	-- })
-	-- second_brain_tab:set_title("SecondBrain")
-	-- second_brain_pane:send_text("nvim" .. line_ending)
-	-- second_brain_pane:split({ direction = "Right" })
+	-- if os.getenv("OS") == "Windows_NT" then
+	-- 	window:spawn_tab({ args = { "pwsh.exe" } })
+	-- end
 
 	window:gui_window():maximize()
 
