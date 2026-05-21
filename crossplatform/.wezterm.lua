@@ -53,7 +53,7 @@ wezterm.on("gui-startup", function(_)
 	}
     local first_title = "1st"
 	if os.getenv("OS") == "Windows_NT" then
-		spawn_args.args = { "ubuntu.exe", "run", "tmux", "new-session", "-A", "-s", "main" }
+		spawn_args.args = { "ubuntu.exe" }
         first_title = "ubuntu"
 	end
 	local shell_tab, _, window = mux.spawn_window(spawn_args)
