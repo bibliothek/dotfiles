@@ -46,3 +46,5 @@ _gco() {
   gco $(gum choose $(git branch --format='%(refname:short)'))
 }
 
+alias _ghpr='gh pr checkout --force'
+
