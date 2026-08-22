@@ -19,6 +19,11 @@ window-save-state = always
 
 mouse-hide-while-typing = true
 
+# Copy on select. Note: `true` uses the selection clipboard, which macOS does
+# not have - set this to `clipboard` if you want it to work there too (that
+# also writes every selection to the system clipboard).
+copy-on-select = true
+
 # Match the tmux scrollback (history-limit 10000)
 scrollback-limit-lines = 10000
 
