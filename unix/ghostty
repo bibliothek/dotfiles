@@ -35,6 +35,18 @@ copy-on-select = clipboard
 # macOS
 macos-titlebar-style = tabs
 
+# Pane navigation (Alt + h/j/k/l)
+keybind = alt+h=goto_split:left
+keybind = alt+j=goto_split:bottom
+keybind = alt+k=goto_split:top
+keybind = alt+l=goto_split:right
+
+# Pane resizing (Ctrl + Alt + h/j/k/l)
+keybind = ctrl+alt+h=resize_split:left,10
+keybind = ctrl+alt+j=resize_split:down,10
+keybind = ctrl+alt+k=resize_split:up,10
+keybind = ctrl+alt+l=resize_split:right,10
+
 # Uncomment to make the left Option key send Meta, which is what the Alt
 # bindings in .tmux.conf (M-hjkl pane nav, M-H/M-L window nav) need on macOS.
 # Right Option keeps composing accented characters.
