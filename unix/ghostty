@@ -3,7 +3,7 @@
 # Option reference: https://ghostty.org/docs/config/reference
 
 # Appearance - mirrors the WezTerm setup
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 font-family = JetBrainsMono Nerd Font
 font-size = 12
 
@@ -15,7 +15,7 @@ cursor-style-blink = false
 window-padding-x = 4
 window-padding-y = 4
 window-padding-balance = true
-window-save-state = always
+maximize = true
 
 mouse-hide-while-typing = true
 
@@ -46,6 +46,12 @@ keybind = ctrl+alt+h=resize_split:left,10
 keybind = ctrl+alt+j=resize_split:down,10
 keybind = ctrl+alt+k=resize_split:up,10
 keybind = ctrl+alt+l=resize_split:right,10
+#
+# "v" for Vertical split (right)
+keybind = alt+v=new_split:right
+
+# "s" for Split (horizontal/down)
+keybind = alt+s=new_split:down
 
 # Uncomment to make the left Option key send Meta, which is what the Alt
 # bindings in .tmux.conf (M-hjkl pane nav, M-H/M-L window nav) need on macOS.
