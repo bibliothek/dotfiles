@@ -14,5 +14,5 @@
       path: crossplatform/profile.ps1
       if: ver
     ~/.zshrc:
-      path: crossplatform/.zshrc
+      path: unix/.zshrc
       if: '[ "$(uname -s)" = "Linux" ] || [ "$(uname -s)" = "Darwin" ]'
