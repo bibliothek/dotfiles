@@ -19,6 +19,11 @@ window-save-state = always
 
 mouse-hide-while-typing = true
 
+# The tab title is set by the precmd hook in .zshrc (always the current
+# directory). Ghostty's own title feature would otherwise replace it with the
+# running command while a command executes.
+shell-integration-features = no-title
+
 # Copy on select. Note: `true` uses the selection clipboard, which macOS does
 # not have - set this to `clipboard` if you want it to work there too (that
 # also writes every selection to the system clipboard).

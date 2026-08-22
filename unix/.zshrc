@@ -23,6 +23,9 @@ plugins=(
 )
 ZSHZ_CASE=smart
 
+# We set the terminal title ourselves below.
+DISABLE_AUTO_TITLE="true"
+
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
@@ -59,6 +62,12 @@ export NVM_DIR="$HOME/.nvm"
 # nvm installed via Homebrew lives under $(brew --prefix nvm)
 [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
 [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"
+
+# Terminal/tab title: always the current directory, matching the tmux
+# automatic-rename-format. %1~ is the trailing path component, or ~ at $HOME.
+autoload -Uz add-zsh-hook
+_set_term_title() { print -Pn '\e]2;%1~\a' }
+add-zsh-hook precmd _set_term_title
 
 _gco() {
   gco $(gum choose $(git branch --format='%(refname:short)'))
