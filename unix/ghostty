@@ -30,7 +30,7 @@ shell-integration-features = no-title
 copy-on-select = clipboard
 
 # Match the tmux scrollback (history-limit 10000)
-scrollback-limit-lines = 10000
+# scrollback-limit-lines = 10000
 
 # macOS
 macos-titlebar-style = tabs
