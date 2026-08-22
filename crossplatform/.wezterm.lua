@@ -6,10 +6,19 @@ local config = wezterm.config_builder()
 local line_ending = "\n"
 local font_size = 12.0
 
+local is_macos = wezterm.target_triple:find("apple%-darwin") ~= nil
+
 if os.getenv("OS") == "Windows_NT" then
 	config.default_prog = { "pwsh.exe" }
 	line_ending = "\r\n"
     font_size = 10.0
+end
+
+if is_macos then
+	-- Treat left Option as Meta instead of composing accented characters,
+	-- so the Alt-based tmux bindings (M-hjkl, M-H/M-L) work.
+	config.send_composed_key_when_left_alt_is_pressed = false
+	config.send_composed_key_when_right_alt_is_pressed = true
 end
 
 -- This is where you actually apply your config choices
