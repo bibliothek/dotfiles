@@ -16,3 +16,6 @@
     ~/.zshrc:
       path: unix/.zshrc
       if: '[ "$(uname -s)" = "Linux" ] || [ "$(uname -s)" = "Darwin" ]'
+    ~/.config/ghostty/config:
+      path: unix/ghostty
+      if: '[ "$(uname -s)" = "Linux" ] || [ "$(uname -s)" = "Darwin" ]'

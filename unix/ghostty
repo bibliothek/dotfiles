@@ -1,0 +1,31 @@
+# Ghostty configuration (macOS + Linux)
+# Linked to ~/.config/ghostty/config by install.conf.yaml.
+# Option reference: https://ghostty.org/docs/config/reference
+
+# Appearance - mirrors the WezTerm setup
+theme = catppuccin-mocha
+font-family = JetBrainsMono Nerd Font
+font-size = 12
+
+# Cursor - equivalent of WezTerm's SteadyBar
+cursor-style = bar
+cursor-style-blink = false
+
+# Window
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+window-save-state = always
+
+mouse-hide-while-typing = true
+
+# Match the tmux scrollback (history-limit 10000)
+scrollback-limit-lines = 10000
+
+# macOS
+macos-titlebar-style = tabs
+
+# Uncomment to make the left Option key send Meta, which is what the Alt
+# bindings in .tmux.conf (M-hjkl pane nav, M-H/M-L window nav) need on macOS.
+# Right Option keeps composing accented characters.
+# macos-option-as-alt = left
