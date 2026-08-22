@@ -24,10 +24,10 @@ mouse-hide-while-typing = true
 # running command while a command executes.
 shell-integration-features = no-title
 
-# Copy on select. Note: `true` uses the selection clipboard, which macOS does
-# not have - set this to `clipboard` if you want it to work there too (that
-# also writes every selection to the system clipboard).
-copy-on-select = true
+# Copy on select. `clipboard` writes to the system clipboard as well as the
+# selection clipboard, so this works on macOS too - at the cost of every mouse
+# selection replacing whatever was on the clipboard.
+copy-on-select = clipboard
 
 # Match the tmux scrollback (history-limit 10000)
 scrollback-limit-lines = 10000
