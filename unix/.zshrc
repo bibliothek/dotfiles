@@ -69,6 +69,10 @@ autoload -Uz add-zsh-hook
 _set_term_title() { print -Pn '\e]2;%1~\a' }
 add-zsh-hook precmd _set_term_title
 
+# Claude Code otherwise rewrites the title continuously while it runs, and the
+# precmd hook above only fires again once claude exits.
+export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
+
 _gco() {
   gco $(gum choose $(git branch --format='%(refname:short)'))
 }
