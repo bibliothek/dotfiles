@@ -78,6 +78,7 @@ _gco() {
 }
 
 alias _ghpr='gh pr checkout --force'
+alias k='kubectl'
 
 # Ctrl+Left/Right: move by word. These are the sequences Ghostty sends.
 bindkey '^[[1;5C' forward-word
