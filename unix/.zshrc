@@ -4,11 +4,13 @@ export ZSH="$HOME/.oh-my-zsh"
 # Keep PATH free of duplicates when this file is re-sourced.
 typeset -U path PATH
 
+# Rancher Desktop's shims go first so its docker/kubectl/nerdctl win over any
+# other install. Everything else is appended.
 path=(
+	"$HOME/.rd/bin"
 	$path
 	"$HOME/source/repos/helper-scripts"
 	"$HOME/.dotnet/tools"
-    "$HOME/.rd/bin:$PATH"
 )
 
 ZSH_THEME="agnoster"
@@ -31,7 +33,14 @@ DISABLE_AUTO_TITLE="true"
 
 # User configuration
 
-[ -f $HOME/.env ] && set -a && source $HOME/.env && set +a
+# Export everything .env defines. Not a && chain: if the last statement in .env
+# returns non-zero, `set +a` would be skipped and allexport would stay on for
+# the rest of this file.
+if [ -f "$HOME/.env" ]; then
+	set -a
+	source "$HOME/.env"
+	set +a
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -58,11 +67,15 @@ export GOPATH=$HOME/go
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# nvm installed via Homebrew lives under $(brew --prefix nvm)
-[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
-[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"
+# Either the install-script layout under $NVM_DIR or the Homebrew one under
+# $(brew --prefix nvm) - never both, loading nvm twice just costs startup time.
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+	\. "$NVM_DIR/nvm.sh"
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+elif [ -n "$HOMEBREW_PREFIX" ] && [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ]; then
+	\. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
+	[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"
+fi
 
 # Terminal/tab title: always the current directory, matching the tmux
 # automatic-rename-format. %1~ is the trailing path component, or ~ at $HOME.
