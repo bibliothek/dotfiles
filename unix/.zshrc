@@ -4,11 +4,13 @@ export ZSH="$HOME/.oh-my-zsh"
 # Keep PATH free of duplicates when this file is re-sourced.
 typeset -U path PATH
 
+# Rancher Desktop's shims go first so its docker/kubectl/nerdctl win over any
+# other install. Everything else is appended.
 path=(
+	"$HOME/.rd/bin"
 	$path
 	"$HOME/source/repos/helper-scripts"
 	"$HOME/.dotnet/tools"
-    "$HOME/.rd/bin:$PATH"
 )
 
 ZSH_THEME="agnoster"
@@ -31,7 +33,14 @@ DISABLE_AUTO_TITLE="true"
 
 # User configuration
 
-[ -f $HOME/.env ] && set -a && source $HOME/.env && set +a
+# Export everything .env defines. Not a && chain: if the last statement in .env
+# returns non-zero, `set +a` would be skipped and allexport would stay on for
+# the rest of this file.
+if [ -f "$HOME/.env" ]; then
+	set -a
+	source "$HOME/.env"
+	set +a
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -57,12 +66,35 @@ export GOPATH=$HOME/go
 [ -d "$GOPATH/bin" ] && path=($path "$GOPATH/bin")
 
 # NVM
+# nvm's install script always lands in $HOME/.nvm, and sourcing its ~4600-line
+# nvm.sh costs ~380ms on every single shell. So don't: put the default
+# version's bin directory straight on PATH - that covers node, npm, npx and
+# everything installed globally under it - and leave `nvm` itself as a stub
+# that sources nvm.sh (and its completion) the first time it is called.
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# nvm installed via Homebrew lives under $(brew --prefix nvm)
-[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
-[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"
+
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+	nvm() {
+		unfunction nvm
+		\. "$NVM_DIR/nvm.sh"
+		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+		nvm "$@"
+	}
+
+	if [ -r "$NVM_DIR/alias/default" ]; then
+		# default may point at another alias: default -> lts/* -> lts/jod -> v22.23.2
+		_nvm_v="$(<$NVM_DIR/alias/default)"
+		[ -r "$NVM_DIR/alias/$_nvm_v" ] && _nvm_v="$(<$NVM_DIR/alias/$_nvm_v)"
+		[ -r "$NVM_DIR/alias/$_nvm_v" ] && _nvm_v="$(<$NVM_DIR/alias/$_nvm_v)"
+		[[ $_nvm_v == [0-9]* ]] && _nvm_v="v$_nvm_v"          # `nvm alias default 20`
+		[[ $_nvm_v == (node|stable|unstable) ]] && _nvm_v=''  # newest installed
+		# (N) nothing at all if that version isn't installed, (n) so that v20.9.0
+		# sorts before v20.10.0, (/) directories only.
+		_nvm_dir=("$NVM_DIR/versions/node/$_nvm_v"*(Nn/))
+		(( $#_nvm_dir )) && path=("${_nvm_dir[-1]}/bin" $path)
+		unset _nvm_v _nvm_dir
+	fi
+fi
 
 # Terminal/tab title: always the current directory, matching the tmux
 # automatic-rename-format. %1~ is the trailing path component, or ~ at $HOME.
