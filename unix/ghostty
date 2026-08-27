@@ -36,22 +36,22 @@ copy-on-select = clipboard
 macos-titlebar-style = tabs
 
 # Pane navigation (Alt + h/j/k/l)
-keybind = alt+h=goto_split:left
-keybind = alt+j=goto_split:bottom
-keybind = alt+k=goto_split:top
-keybind = alt+l=goto_split:right
+# keybind = alt+h=goto_split:left
+# keybind = alt+j=goto_split:bottom
+# keybind = alt+k=goto_split:top
+# keybind = alt+l=goto_split:right
 
 # Pane resizing (Ctrl + Alt + h/j/k/l)
-keybind = ctrl+alt+h=resize_split:left,10
-keybind = ctrl+alt+j=resize_split:down,10
-keybind = ctrl+alt+k=resize_split:up,10
-keybind = ctrl+alt+l=resize_split:right,10
+# keybind = ctrl+alt+h=resize_split:left,10
+# keybind = ctrl+alt+j=resize_split:down,10
+# keybind = ctrl+alt+k=resize_split:up,10
+# keybind = ctrl+alt+l=resize_split:right,10
 #
 # "v" for Vertical split (right)
-keybind = alt+v=new_split:right
+# keybind = alt+v=new_split:right
 
 # "s" for Split (horizontal/down)
-keybind = alt+s=new_split:down
+# keybind = alt+s=new_split:down
 
 # Uncomment to make the left Option key send Meta, which is what the Alt
 # bindings in .tmux.conf (M-hjkl pane nav, M-H/M-L window nav) need on macOS.
