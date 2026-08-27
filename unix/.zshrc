@@ -56,6 +56,15 @@ for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbr
 done
 unset _brew
 
+# Ghostty always starts inside tmux: every window gets its own fresh session,
+# so two Ghostty windows never mirror each other. Placed after the brew
+# shellenv above (tmux comes from brew) and before the slower setup below,
+# which the inner shell redoes anyway. The $TMUX guard keeps this from
+# recursing inside tmux itself.
+if [[ "$TERM_PROGRAM" == "ghostty" && -z "$TMUX" ]] && command -v tmux >/dev/null; then
+	exec tmux new-session
+fi
+
 # Atuin
 [ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
 command -v atuin >/dev/null && eval "$(atuin init zsh)"
