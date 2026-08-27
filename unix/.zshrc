@@ -66,35 +66,8 @@ export GOPATH=$HOME/go
 [ -d "$GOPATH/bin" ] && path=($path "$GOPATH/bin")
 
 # NVM
-# nvm's install script always lands in $HOME/.nvm, and sourcing its ~4600-line
-# nvm.sh costs ~380ms on every single shell. So don't: put the default
-# version's bin directory straight on PATH - that covers node, npm, npx and
-# everything installed globally under it - and leave `nvm` itself as a stub
-# that sources nvm.sh (and its completion) the first time it is called.
 export NVM_DIR="$HOME/.nvm"
-
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-	nvm() {
-		unfunction nvm
-		\. "$NVM_DIR/nvm.sh"
-		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-		nvm "$@"
-	}
-
-	if [ -r "$NVM_DIR/alias/default" ]; then
-		# default may point at another alias: default -> lts/* -> lts/jod -> v22.23.2
-		_nvm_v="$(<$NVM_DIR/alias/default)"
-		[ -r "$NVM_DIR/alias/$_nvm_v" ] && _nvm_v="$(<$NVM_DIR/alias/$_nvm_v)"
-		[ -r "$NVM_DIR/alias/$_nvm_v" ] && _nvm_v="$(<$NVM_DIR/alias/$_nvm_v)"
-		[[ $_nvm_v == [0-9]* ]] && _nvm_v="v$_nvm_v"          # `nvm alias default 20`
-		[[ $_nvm_v == (node|stable|unstable) ]] && _nvm_v=''  # newest installed
-		# (N) nothing at all if that version isn't installed, (n) so that v20.9.0
-		# sorts before v20.10.0, (/) directories only.
-		_nvm_dir=("$NVM_DIR/versions/node/$_nvm_v"*(Nn/))
-		(( $#_nvm_dir )) && path=("${_nvm_dir[-1]}/bin" $path)
-		unset _nvm_v _nvm_dir
-	fi
-fi
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Terminal/tab title: always the current directory, matching the tmux
 # automatic-rename-format. %1~ is the trailing path component, or ~ at $HOME.
