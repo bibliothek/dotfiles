@@ -62,9 +62,9 @@ unset _brew
 # spawning their own. Placed after the brew shellenv above (tmux comes from
 # brew) and before the slower setup below, which the inner shell redoes anyway.
 # The $TMUX guard keeps this from recursing inside tmux itself.
-if [[ "$TERM_PROGRAM" == "ghostty" && -z "$TMUX" ]] && command -v tmux >/dev/null; then
-	exec tmux new-session -A -s main
-fi
+# if [[ "$TERM_PROGRAM" == "ghostty" && -z "$TMUX" ]] && command -v tmux >/dev/null; then
+# 	exec tmux new-session -A -s main
+# fi
 
 # Atuin
 [ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
