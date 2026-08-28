@@ -11,6 +11,7 @@ path=(
 	$path
 	"$HOME/source/repos/helper-scripts"
 	"$HOME/.dotnet/tools"
+    "$HOME/.local/bin"
 )
 
 ZSH_THEME="agnoster"
