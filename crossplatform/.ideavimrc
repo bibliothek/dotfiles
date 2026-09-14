@@ -49,6 +49,10 @@ map <leader><leader> <Action>(GotoFile)
 map <leader>ss <Action>(FileStructurePopup)
 map <leader>sS <Action>(GotoSymbol)
 
+""Buffers
+map <leader>bd <Action>(CloseContent)
+map <leader>bo <Action>(CloseAllEditorsButActive)
+
 ""Test
 map <leader>tl <Action>(RiderUnitTestRunCurrentSessionAction)
 map <leader>tr <Action>(RiderUnitTestRunContextAction)
