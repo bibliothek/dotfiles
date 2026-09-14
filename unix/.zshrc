@@ -1,15 +1,17 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+export DOTNET_ROOT="$HOME/.dotnet"
+
 # Keep PATH free of duplicates when this file is re-sourced.
 typeset -U path PATH
-
 # Rancher Desktop's shims go first so its docker/kubectl/nerdctl win over any
 # other install. Everything else is appended.
 path=(
 	"$HOME/.rd/bin"
 	$path
 	"$HOME/source/repos/helper-scripts"
+	"$HOME/.dotnet"
 	"$HOME/.dotnet/tools"
     "$HOME/.local/bin"
 )
