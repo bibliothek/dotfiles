@@ -3,6 +3,9 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export DOTNET_ROOT="$HOME/.dotnet"
 
+export EDITOR=nvim
+export VISUAL=nvim
+
 # Keep PATH free of duplicates when this file is re-sourced.
 typeset -U path PATH
 # Rancher Desktop's shims go first so its docker/kubectl/nerdctl win over any
