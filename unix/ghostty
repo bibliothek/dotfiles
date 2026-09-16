@@ -48,10 +48,10 @@ macos-titlebar-style = tabs
 # keybind = ctrl+alt+l=resize_split:right,10
 #
 # "d" for Vertical split (right)
-keybind = alt+d=new_split:right
+# keybind = alt+d=new_split:right
 
 # "s" for Split (horizontal/down)
-keybind = alt+s=new_split:down
+# keybind = alt+s=new_split:down
 
 # Uncomment to make the left Option key send Meta, which is what the Alt
 # bindings in .tmux.conf (M-hjkl pane nav, M-H/M-L window nav) need on macOS.
