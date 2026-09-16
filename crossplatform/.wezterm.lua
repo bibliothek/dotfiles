@@ -24,29 +24,6 @@ config.window_decorations = 'RESIZE'
 config.default_cursor_style = 'SteadyBar'
 config.front_end = "WebGpu"
 
-config.keys = {
-	{
-		key = "t",
-		mods = 'CTRL|SHIFT|ALT',
-		action = wezterm.action_callback(function(_, pane)
-			local tab = pane:tab()
-			local panes = tab:panes_with_info()
-			if #panes == 1 then
-				pane:split({
-					direction = "Right",
-					size = 0.4,
-				})
-			elseif not panes[1].is_zoomed then
-				panes[1].pane:activate()
-				tab:set_zoomed(true)
-			elseif panes[1].is_zoomed then
-				tab:set_zoomed(false)
-				panes[2].pane:activate()
-			end
-		end),
-	},
-}
-
 wezterm.on("gui-startup", function(_)
 	local spawn_args = {
 		workspace = "main",

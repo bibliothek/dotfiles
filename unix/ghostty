@@ -1,5 +1,4 @@
 # Ghostty configuration (macOS + Linux)
-# Linked to ~/.config/ghostty/config by install.conf.yaml.
 # Option reference: https://ghostty.org/docs/config/reference
 
 # Appearance - mirrors the WezTerm setup
