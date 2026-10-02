@@ -9,6 +9,8 @@
     ~/.ideavimrc: crossplatform/.ideavimrc
     ~/.wezterm.lua: crossplatform/.wezterm.lua
     ~/martin-paradox.omp.json: crossplatform/martin-paradox.omp.json
+    ~/.claude/CLAUDE.md: crossplatform/AGENTS.md
+    ~/.pi/agent/AGENTS.md: crossplatform/AGENTS.md
     ~/.config/atuin/config.toml: 
       path: crossplatform/atuin
     ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
