@@ -11,6 +11,10 @@
 
 - Use minimal comments in generated code. Only comment non-obvious logic.
 
+## Git
+
+- Ask before pushing a branch, unless I explicitly told you to push.
+
 ## PRs
 
 - PR descriptions and PR comments: as few words as possible. Very terse. No bullet-point essays.
