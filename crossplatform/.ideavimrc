@@ -47,6 +47,8 @@ map [d <Action>(ReSharperGotoPrevErrorInSolution)
 map ]d <Action>(ReSharperGotoNextErrorInSolution)
 map [m <Action>(MethodUp)
 map ]m <Action>(MethodDown)
+map [h <Action>(VcsShowNextChangeMarker)
+map ]h <Action>(VcsShowPrevChangeMarker)
 
 map <leader>e <Action>(LocateInSolutionView)
 map <leader><leader> <Action>(GotoFile)
