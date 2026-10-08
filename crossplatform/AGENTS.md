@@ -24,4 +24,5 @@
 - One-line summary of the change, then issues ordered by severity, most severe first.
 - Only actual errors, not potential future problems.
 - Always include filename and line number for each issue.
+- If GitHub PR, check against PR description
 
