@@ -14,7 +14,7 @@
     ~/.config/atuin/config.toml: 
       path: crossplatform/atuin
     ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
-      path: crossplatform/profile.ps1
+      path: windows/profile.ps1
       if: ver
     ~/.zshrc:
       path: unix/.zshrc
