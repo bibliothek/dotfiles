@@ -48,6 +48,8 @@ if [ -f "$HOME/.env" ]; then
 	set +a
 fi
 
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 prompt_context(){}
