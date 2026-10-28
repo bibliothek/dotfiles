@@ -64,6 +64,10 @@ for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbr
 done
 unset _brew
 
+# GNU sed as `sed` on macOS (Linux already has it).
+[[ $OSTYPE == darwin* && -d "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin" ]] &&
+	path=("$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin" $path)
+
 # Ghostty always starts inside tmux: attach to the "main" session, creating it
 # on first launch (-A). Later Ghostty windows join that same session rather than
 # spawning their own. Placed after the brew shellenv above (tmux comes from
