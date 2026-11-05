@@ -17,7 +17,7 @@
 
 ## PRs
 
-- PR descriptions and PR comments: as few words as possible. Very terse. No bullet-point essays.
+- PR descriptions and PR comments: as few words as possible. Very terse.
 
 ## Reviews
 
