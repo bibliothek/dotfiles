@@ -14,6 +14,7 @@
 ## Git
 
 - Ask before pushing a branch, unless I explicitly told you to push.
+- Ask before committing, unless I explicitly told you to commit.
 
 ## PRs
 
