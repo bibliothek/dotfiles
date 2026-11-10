@@ -1,0 +1,2 @@
+Set-PSReadlineOption -PredictionSource None
+

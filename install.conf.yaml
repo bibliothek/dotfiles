@@ -18,6 +18,9 @@
     ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
       path: windows/profile.ps1
       if: ver
+    ~/.config/powershell/profile.ps1:
+      path: unix/minimal-profile.ps1
+      if: '[ "$(uname -s)" = "Linux" ] || [ "$(uname -s)" = "Darwin" ]'
     ~/.zshrc:
       path: unix/.zshrc
       if: '[ "$(uname -s)" = "Linux" ] || [ "$(uname -s)" = "Darwin" ]'
