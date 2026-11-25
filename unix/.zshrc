@@ -35,6 +35,21 @@ ZSHZ_CASE=smart
 # We set the terminal title ourselves below.
 DISABLE_AUTO_TITLE="true"
 
+# Homebrew (Apple Silicon, Intel macOS, Linuxbrew) - before anything that
+# relies on brew-installed binaries being on PATH, including oh-my-zsh's git
+# plugin, which runs `git version` at load (brew git skips the slow xcrun shim).
+for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+	if [ -x "$_brew" ]; then
+		eval "$("$_brew" shellenv)"
+		break
+	fi
+done
+unset _brew
+
+# GNU sed as `sed` on macOS (Linux already has it).
+[[ $OSTYPE == darwin* && -d "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin" ]] &&
+	path=("$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin" $path)
+
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
@@ -53,20 +68,6 @@ fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 prompt_context(){}
-
-# Homebrew (Apple Silicon, Intel macOS, Linuxbrew) - before anything that
-# relies on brew-installed binaries being on PATH.
-for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
-	if [ -x "$_brew" ]; then
-		eval "$("$_brew" shellenv)"
-		break
-	fi
-done
-unset _brew
-
-# GNU sed as `sed` on macOS (Linux already has it).
-[[ $OSTYPE == darwin* && -d "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin" ]] &&
-	path=("$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin" $path)
 
 # Ghostty always starts inside tmux: attach to the "main" session, creating it
 # on first launch (-A). Later Ghostty windows join that same session rather than
